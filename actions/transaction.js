@@ -192,11 +192,11 @@ function calculateNextRecurringDate(startDate, interval) {
 export async function scanReceipt(file) {
   console.log("1. Function started");
   try {
-    console.log("File size:", file.size / 1024 / 1024, "MB");
+
     const arrayBuffer = await file.arrayBuffer();
-    console.log("2. Converted to arrayBuffer");
+
     const base64String = Buffer.from(arrayBuffer).toString("base64");
-    console.log("3. Converted to base64");
+
     const prompt = `
       Analyze this receipt image and extract JSON:
       amount, date, description, merchantName, category.
@@ -220,7 +220,7 @@ export async function scanReceipt(file) {
         },
       ],
     });
-    console.log("4. Gemini responded");
+   
 
     const text = result.text;
     const cleaned = text.replace(/```(?:json)?\n?/g, "").trim();
