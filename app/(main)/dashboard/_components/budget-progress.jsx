@@ -73,13 +73,6 @@ export function BudgetProgress({ initialBudget, currentExpenses }) {
 
   return (
     <Card
-      // className={`transition-all ${
-      //   percentUsed >= 100
-      //     ? "border-red-500 bg-red-50"
-      //     : percentUsed >= 85
-      //       ? "border-yellow-500 bg-yellow-50"
-      //       : ""
-      // }`}
       className={`border-2 transition-all ${
         percentUsed >= 100
           ? "border-red-500 bg-red-50"
