@@ -96,8 +96,7 @@ export async function createTransaction(data) {
 
     return { success: true, data: serializeAmount(transaction) };
   } catch (error) {
-    console.error("CREATE TRANSACTION ERROR:", error);
-    return { success: false, error: error.message };
+    throw new Error("CREATE TRANSACTION ERROR:", error);
   }
 }
 
@@ -126,6 +125,7 @@ function calculateNextRecurringDate(startDate, interval) {
 // Scan Receipt
 export async function scanReceipt(file) {
   try {
+
     const arrayBuffer = await file.arrayBuffer();
 
     const base64String = Buffer.from(arrayBuffer).toString("base64");
@@ -153,6 +153,7 @@ export async function scanReceipt(file) {
         },
       ],
     });
+   
 
     const text = result.text;
     const cleaned = text.replace(/```(?:json)?\n?/g, "").trim();
